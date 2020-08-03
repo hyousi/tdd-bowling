@@ -47,4 +47,29 @@ public class BowlingGameTest {
                 exceptionFrameOutOfBoundary2.getMessage().contains("Illegal Argument:"))
         );
     }
+
+    @Test
+    public void testGetScoreWhenGameNotEnd() {
+        int[] records = {10, 9, 1, 4, 3};
+        BowlingGame game = new BowlingGame();
+
+        for (int record : records) {
+            game.roll(record);
+        }
+
+        assertEquals(41, game.getScore());
+    }
+
+    @Test
+    public void testGetScoreWhenGameEnd() {
+        int[] records = {10, 9, 1, 4, 3, 7, 3, 8, 1, 10, 4, 3, 2, 6, 8, 1, 10, 2, 8};
+        BowlingGame game = new BowlingGame();
+
+        for (int record : records) {
+            game.roll(record);
+        }
+
+        assertEquals(129, game.getScore());
+
+    }
 }
